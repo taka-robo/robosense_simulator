@@ -4,7 +4,7 @@
   <xacro:macro name="HDL-32E" params="*origin parent:=base_link name:=velodyne topic:=/velodyne_points hz:=10 lasers:=32 samples:=2187 collision_range:=0.3 min_range:=0.9 max_range:=130.0 noise:=0.008 min_angle:=-${M_PI} max_angle:=${M_PI} gpu:=false">
 
     <joint name="${name}_base_mount_joint" type="fixed">
-      <xacro:insert_block name="origin" /> 
+      <xacro:insert_block name="origin" />
       <parent link="${parent}"/>
       <child link="${name}_base_link"/>
     </joint>
@@ -13,9 +13,7 @@
       <inertial>
         <mass value="1.0"/>
         <origin xyz="0 0 0.07212"/>
-        <inertia ixx="${(1.0 * (3.0*0.04267*0.04267 + 0.14424*0.14424)) / 12.0}" ixy="0" ixz="0"
-          iyy="${(1.0 * (3.0*0.04267*0.04267 + 0.14424*0.14424)) / 12.0}" iyz="0"
-          izz="${0.5 * 1.0 * (0.04267*0.04267)}"/>
+        <inertia ixx="${(1.0 * (3.0*0.04267*0.04267 + 0.14424*0.14424)) / 12.0}" ixy="0" ixz="0" iyy="${(1.0 * (3.0*0.04267*0.04267 + 0.14424*0.14424)) / 12.0}" iyz="0" izz="${0.5 * 1.0 * (0.04267*0.04267)}"/>
       </inertial>
       <visual>
         <geometry>
@@ -30,7 +28,7 @@
       </collision>
     </link>
 
-    <joint name="${name}_base_scan_joint" type="fixed" >
+    <joint name="${name}_base_scan_joint" type="fixed">
       <origin xyz="0 0 0.09081" rpy="0 0 0" />
       <parent link="${name}_base_link" />
       <child link="${name}"/>

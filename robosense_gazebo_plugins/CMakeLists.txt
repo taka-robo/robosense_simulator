@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(velodyne_gazebo_plugins)
+project(robosense_gazebo_plugins)
 
 find_package(catkin REQUIRED COMPONENTS
   roscpp
@@ -12,7 +12,7 @@ find_package(gazebo REQUIRED)
 
 catkin_package(
   INCLUDE_DIRS include ${GAZEBO_INCLUDE_DIRS}
-  LIBRARIES gazebo_ros_velodyne_laser gazebo_ros_velodyne_gpu_laser
+  LIBRARIES gazebo_ros_robosense_laser gazebo_ros_robosense_gpu_laser
   CATKIN_DEPENDS roscpp sensor_msgs gazebo_ros
 )
 
@@ -26,22 +26,22 @@ link_directories(
   ${GAZEBO_LIBRARY_DIRS}
 )
 
-add_library(gazebo_ros_velodyne_laser src/GazeboRosVelodyneLaser.cpp)
-target_link_libraries(gazebo_ros_velodyne_laser
+add_library(gazebo_ros_robosense_laser src/GazeboRosRobosenseLaser.cpp)
+target_link_libraries(gazebo_ros_robosense_laser
   ${catkin_LIBRARIES}
   ${GAZEBO_LIBRARIES}
   RayPlugin
 )
 
-add_library(gazebo_ros_velodyne_gpu_laser src/GazeboRosVelodyneLaser.cpp)
-target_link_libraries(gazebo_ros_velodyne_gpu_laser
+add_library(gazebo_ros_robosense_gpu_laser src/GazeboRosRobosenseLaser.cpp)
+target_link_libraries(gazebo_ros_robosense_gpu_laser
   ${catkin_LIBRARIES}
   ${GAZEBO_LIBRARIES}
   GpuRayPlugin
 )
-target_compile_definitions(gazebo_ros_velodyne_gpu_laser PRIVATE GAZEBO_GPU_RAY=1)
+target_compile_definitions(gazebo_ros_robosense_gpu_laser PRIVATE GAZEBO_GPU_RAY=1)
 
-install(TARGETS gazebo_ros_velodyne_laser gazebo_ros_velodyne_gpu_laser
+install(TARGETS gazebo_ros_robosense_laser gazebo_ros_robosense_gpu_laser
         LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 )
 
