@@ -339,8 +339,7 @@ sensor_msgs::PointCloud2 GazeboRosRobosenseLaser::Getcloud(ConstLaserScanStamped
 
   const double yDiff = maxAngle.Radian() - minAngle.Radian();
   const double pDiff = verticalMaxAngle.Radian() - verticalMinAngle.Radian();
-  ROS_INFO("pDiff%lf", pDiff);
-
+  // ROS_INFO("pDiff%lf", pDiff);
   const double MIN_RANGE = std::max(min_range_, minRange);
   const double MAX_RANGE = std::min(max_range_, maxRange);
   const double MIN_INTENSITY = min_intensity_;
